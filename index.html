@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EQ API — Developer-First Emotional & Intent Intelligence</title>
+  <meta name="description" content="EQ API provides clean, developer-friendly endpoints for intent interpretation and emotionally-aware insights. Predictable JSON. Built to plug into products." />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:title" content="EQ API — Developer-First Emotional & Intent Intelligence" />
+  <meta property="og:description" content="Clean endpoints. Predictable JSON. Built to plug into products." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 15% 10%, rgba(110,231,255,.14), transparent 55%),
+                  radial-gradient(900px 500px at 85% 20%, rgba(255,179,71,.12), transparent 55%),
+                  #070A12;
+      color:#E8EEF9;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:1080px; margin:0 auto; padding:28px 20px 80px; }
+    .top{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:6px 0 18px; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      padding:6px;
+      display:grid; place-items:center;
+      box-shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    .logo img{ width:100%; height:100%; object-fit:contain; }
+    .nav{ display:flex; gap:18px; opacity:.9; font-size:14px; }
+    .nav a:hover{ text-decoration:underline; text-underline-offset:4px; opacity:1; }
+
+    .hero{ padding:44px 0 18px; display:grid; gap:20px; }
+    .h1{
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height:1.05;
+      margin:0;
+      letter-spacing:-0.7px;
+    }
+    .sub{
+      max-width:820px;
+      font-size:18px;
+      line-height:1.6;
+      opacity:.9;
+      margin:0;
+    }
+    .tagRow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      opacity:.92;
+    }
+
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow:0 10px 40px rgba(0,0,0,.25);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      font-weight:800;
+    }
+    .btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.20); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(110,231,255,.22), rgba(110,231,255,.08));
+      border-color: rgba(110,231,255,.35);
+    }
+    .btn.secondary{
+      background: linear-gradient(180deg, rgba(255,179,71,.18), rgba(255,179,71,.06));
+      border-color: rgba(255,179,71,.28);
+    }
+    .muted{ opacity:.78; font-weight:700; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+    .card{
+      grid-column: span 6;
+      border-radius:18px;
+      padding:16px 16px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      box-shadow:0 12px 50px rgba(0,0,0,.30);
+    }
+    @media (max-width:760px){ .card{ grid-column: span 12; } }
+    .card h3{ margin:0 0 6px; font-size:16px; letter-spacing:.2px; }
+    .card p{ margin:0; opacity:.86; line-height:1.5; font-size:14.5px; }
+
+    .section{ margin-top:46px; }
+    .section h2{ font-size:20px; margin:0 0 10px; letter-spacing:.2px; }
+    .kicker{ opacity:.86; line-height:1.6; max-width:860px; margin:0; }
+
+    pre{
+      margin:14px 0 0;
+      border-radius:18px;
+      padding:14px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:auto;
+    }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    footer{
+      margin-top:70px;
+      opacity:.76;
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:18px;
+    }
+    .tinyLink{ text-decoration:underline; text-underline-offset:3px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-label="EQ API logo">
+          <img alt="EQ API logo" src="./logo.png" />
+        </div>
+        <div>
+          <div style="font-size:15px; opacity:.90; font-weight:900;">EQ API</div>
+          <div style="font-size:12px; opacity:.70; font-weight:800;">Developer-first emotional & intent intelligence</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#endpoints">Endpoints</a>
+        <a href="#example">Example</a>
+        <a href="#support">Support</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <h1 class="h1">Emotional intelligence for your product—delivered as clean APIs.</h1>
+      <p class="sub">
+        EQ API provides developer-friendly endpoints for intent interpretation and emotionally-aware insights.
+        Predictable JSON. Stable structure. Built to plug into apps, agents, and workflows without chaos.
+      </p>
+
+      <div class="tagRow">
+        <span class="tag">REST</span>
+        <span class="tag">Predictable JSON</span>
+        <span class="tag">Structured fields</span>
+        <span class="tag">App-friendly</span>
+        <span class="tag">Dev-focused</span>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="PASTE_YOUR_RAPIDAPI_LISTING_LINK_HERE" target="_blank" rel="noreferrer">
+          Browse on RapidAPI <span class="muted">→</span>
+        </a>
+        <a class="btn secondary" href="#example">
+          See output format <span class="muted">→</span>
+        </a>
+        <a class="btn" href="mailto:lhallql@gmail.com?subject=EQ%20API%20Support">
+          Contact support <span class="muted">→</span>
+        </a>
+      </div>
+
+      <div class="grid" id="endpoints">
+        <div class="card">
+          <h3>Intent Interpretation</h3>
+          <p>
+            Identify likely intent, tone, emotional undertones, and “what’s really being said” from short text.
+            Built for messaging UX, assistants, coaching, and smart routing.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Dream Interpretation (Oracle-style)</h3>
+          <p>
+            Symbolic + archetypal interpretation with structured output. Mythic language when appropriate,
+            plus practical reflection you can render in product experiences.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Consistent structure</h3>
+          <p>
+            Responses are shaped for product use: clear keys, readable summaries, and fields you can store,
+            filter, and display without rewriting everything.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Built for integration</h3>
+          <p>
+            If you can send JSON, you can use EQ API. Stable contracts, predictable errors, and output that
+            won’t whiplash your UI.
+          </p>
+        </div>
+      </div>
+
+      <section class="section" id="example">
+        <h2>Example response format</h2>
+        <p class="kicker">
+          The goal is simple: a response shape that’s consistent, readable, and useful inside real products.
+        </p>
+
+        <pre><code>{
+  "summary": "His reply signals intentional ambiguity around making plans.",
+  "detected_tone": "evasive, non-committal",
+  "likely_intent": "avoid direct commitment while keeping options open",
+  "possible_interpretations": [
+    "He is hesitant to commit but doesn't want to say no.",
+    "He is keeping options open and minimizing accountability."
+  ],
+  "emotional_undertones": [
+    "uncertainty",
+    "guardedness"
+  ],
+  "suggested_next_moves": [
+    "Ask one direct clarifying question with a concrete option.",
+    "Set a boundary: you need a yes/no by a specific time."
+  ],
+  "confidence": 0.93
+}</code></pre>
+      </section>
+
+      <section class="section" id="support">
+        <h2>Support</h2>
+        <p class="kicker">
+          For support or integration questions, email
+          <a class="tinyLink" href="mailto:lhallql@gmail.com?subject=EQ%20API%20Support">lhallql@gmail.com</a>.
+          Include sample input/output when possible.
+        </p>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> EQ API. <span style="opacity:.75;">Built for developers.</span></div>
+        <div style="opacity:.75;">Support: <a class="tinyLink" href="mailto:lhallql@gmail.com?subject=EQ%20API%20Support">lhallql@gmail.com</a></div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
